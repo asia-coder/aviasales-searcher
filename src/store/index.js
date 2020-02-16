@@ -1,10 +1,10 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
+import Vue from 'vue'
 import tickets from './tickets'
 
 Vue.use(Vuex)
 
-export default Vuex.Store({
+export default new Vuex.Store({
   modules: {
     tickets
   }

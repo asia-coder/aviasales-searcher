@@ -6,16 +6,16 @@
       <checkbox-item label="Все" value="all"></checkbox-item>
     </div>
     <div class="filter-item">
-      <checkbox-item label="Без пересадок" value="without_transfer"></checkbox-item>
+      <checkbox-item label="Без пересадок" value="0"></checkbox-item>
     </div>
     <div class="filter-item">
-      <checkbox-item label="1 пересадка" value="one_transfer"></checkbox-item>
+      <checkbox-item label="1 пересадка" value="1"></checkbox-item>
     </div>
     <div class="filter-item">
-      <checkbox-item label="2 пересадки" value="two_transfer"></checkbox-item>
+      <checkbox-item label="2 пересадки" value="2"></checkbox-item>
     </div>
     <div class="filter-item">
-      <checkbox-item label="3 пересадки" value="three_transfer"></checkbox-item>
+      <checkbox-item label="3 пересадки" value="3"></checkbox-item>
     </div>
   </div>
 </template>

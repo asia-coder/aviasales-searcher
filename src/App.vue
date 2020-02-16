@@ -1,15 +1,23 @@
 <template>
   <div id="app">
     <div class="logo">
-      <img alt="Vue logo" width="60" height="60" src="./assets/logo.png">
+      <img alt="Logo" src="./assets/logo-avs.png">
     </div>
 
     <div class="container">
       <Sidebar></Sidebar>
       <div class="main">
         <div class="buttons-container">
-          <button class="button-filter button-filter--active" type="button">Самый дешевый</button>
-          <button class="button-filter" type="button">Самый быстрый</button>
+          <button
+              class="button-filter"
+              :class="{ 'button-filter--active': ('min_price' == getFilterPrice) }"
+              v-on:click="changePriceFilter('min_price')"
+              type="button">Самый дешевый</button>
+          <button
+              class="button-filter"
+              :class="{ 'button-filter--active': ('fast' == getFilterPrice) }"
+              v-on:click="changePriceFilter('fast')"
+              type="button">Самый быстрый</button>
         </div>
         <TicketsList></TicketsList>
       </div>
@@ -20,13 +28,25 @@
 <script>
   import Sidebar from './components/Sidebar'
   import TicketsList from './components/TicketsList'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'app',
     components: {
       Sidebar,
       TicketsList
-    }
+    },
+    methods: {
+      ...mapActions(['priceFilter']),
+      changePriceFilter(param) {
+        this.priceFilter(param)
+        this.$store.commit('setTickets', { tickets: this.getTickets, merge: false, priceFilter: this.getFilterPrice })
+      }
+
+    },
+    computed: {
+      ...mapGetters(['getTickets', 'getFilterPrice']),
+    },
   }
 </script>
 
@@ -63,6 +83,7 @@
     max-width: 750px;
     margin: 0 auto;
     display: flex;
+    align-items: flex-start;
   }
 
   .main {
