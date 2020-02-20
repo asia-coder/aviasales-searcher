@@ -40,19 +40,25 @@
     props: ['ticket'],
     methods: {
       getStartDate: (date) => {
-        return moment(date).format('hh:mm')
+        return moment(date).format('HH:mm')
       },
 
       getEndDate: (date, minutes) => {
-        return moment(date).add(minutes, 'minutes').format('hh:mm')
+        return moment(date).add(minutes, 'minutes').format('HH:mm')
       },
 
       getDurationTime: (date, minutes) => {
         const startDate = moment(date)
         const endDate = moment(date).add(minutes, 'minutes')
         const diff = endDate.diff(startDate, 'minutes')
+        const hours = parseInt(diff / 60)
+        let minut = diff % 60
 
-        return moment().minutes(diff).format('hh:mm')
+        if (minut < 10) {
+          minut = '0' + minut;
+        }
+
+        return hours + 'ч ' + minut + 'м'
       }
     }
   }
